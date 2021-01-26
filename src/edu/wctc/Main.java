@@ -5,7 +5,7 @@ import java.math.BigInteger;
 public class Main {
 
     /*
-    KidRSA https://macs358.org/chapters/11/1/kidrsa.html
+    Kid-RSA https://macs358.org/chapters/11/1/kidrsa.html
      */
     public static void main(String[] args) {
         int a = 200587;
@@ -26,7 +26,7 @@ public class Main {
         String messageFromAlice = bob.decrypt(encryptedToBob);
         System.out.printf("Plaintext of %s: %s%n%n", message, messageFromAlice);
 
-        message = "Hello worl";
+        message = "Hello";
 
         System.out.println("Bob to Alice");
         System.out.println("-------------------------------------------");

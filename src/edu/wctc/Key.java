@@ -11,16 +11,40 @@ public class Key {
         this.num2 = num2; // n in both public and private
     }
 
-    public BigInteger e() {
-        return num1;
+    public static Key parse(String formattedKey) {
+        formattedKey = formattedKey.replaceAll("[^0-9,]", "");
+        String[] halves = formattedKey.split(",");
+        return new Key(new BigInteger(halves[0]), new BigInteger(halves[1]));
     }
 
     public BigInteger d() {
         return num1;
     }
 
-    public BigInteger n() {
-        return num2;
+    public String decrypt(BigInteger cipherText) {
+        String message = "";
+
+        BigInteger decryptedNum = cipherText.multiply(d()).mod(n());
+        System.out.printf("Decrypt: %d * %d (%d) %% %d = %d%n", cipherText, d(), cipherText.multiply(d()), n(), decryptedNum);
+
+        String bits = decryptedNum.toString(2);
+        System.out.printf("Decrypt: binary %s%n", bits);
+
+        while (bits.length() % 8 != 0) {
+            bits = "0" + bits; // left pad with zeroes to ensure groups of 8
+        }
+
+        // Grab chunks of 8 bits and convert to an ASCII character
+        for (int i = 0; i < bits.length(); i += 8) {
+            String byteChunk = bits.substring(i, i + 8);
+            int decimal = Integer.parseInt(byteChunk, 2);
+            message += Character.toString(decimal);
+        }
+        return message;
+    }
+
+    public BigInteger e() {
+        return num1;
     }
 
     /*
@@ -55,25 +79,12 @@ public class Key {
         }
     }
 
-    public String decrypt(BigInteger cipherText) {
-        String message = "";
+    public BigInteger n() {
+        return num2;
+    }
 
-        BigInteger decryptedNum = cipherText.multiply(d()).mod(n());
-        System.out.printf("Decrypt: %d * %d (%d) %% %d = %d%n", cipherText, d(), cipherText.multiply(d()), n(), decryptedNum);
-
-        String bits = decryptedNum.toString(2);
-        System.out.printf("Decrypt: binary %s%n", bits);
-
-        while (bits.length() % 8 != 0) {
-            bits = "0" + bits; // left pad with zeroes to ensure groups of 8
-        }
-
-        // Grab chunks of 8 bits and convert to an ASCII character
-        for (int i = 0; i < bits.length(); i += 8) {
-            String byteChunk = bits.substring(i, i + 8);
-            int decimal = Integer.parseInt(byteChunk, 2);
-            message += Character.toString(decimal);
-        }
-        return message;
+    @Override
+    public String toString() {
+        return String.format("(%d, %d)", num1, num2);
     }
 }

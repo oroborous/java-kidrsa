@@ -1,5 +1,7 @@
 package edu.wctc;
 
+import edu.wctc.gui.Controller;
+
 import java.math.BigInteger;
 
 public class Main {
@@ -8,6 +10,8 @@ public class Main {
     Kid-RSA https://macs358.org/chapters/11/1/kidrsa.html
      */
     public static void main(String[] args) {
+        new Controller();
+
         int a = 200587;
         int b = 222659;
         int aPrime = 286547;

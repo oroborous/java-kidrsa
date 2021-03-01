@@ -12,6 +12,10 @@ public class Main {
     public static void main(String[] args) {
         new Controller();
 
+
+        // This is the old console application, before I added a GUI to it.
+
+        /*
         int a = 200587;
         int b = 222659;
         int aPrime = 286547;
@@ -24,25 +28,33 @@ public class Main {
 
         System.out.println("Alice to Bob");
         System.out.println("-------------------------------------------");
-        BigInteger encryptedToBob = bob.getPublicKey().encrypt(message);
-        System.out.printf("Ciphertext of %s: %s%n%n", message, encryptedToBob);
+        try {
+            BigInteger encryptedToBob = bob.getPublicKey().encrypt(message);
+            System.out.printf("Ciphertext of %s: %s%n%n", message, encryptedToBob);
 
-        String messageFromAlice = bob.decrypt(encryptedToBob);
-        System.out.printf("Plaintext of %s: %s%n%n", message, messageFromAlice);
+            String messageFromAlice = bob.decrypt(encryptedToBob);
+            System.out.printf("Plaintext of %s: %s%n%n", message, messageFromAlice);
+        } catch (KeySizeException e) {
+            System.out.println(e.getMessage());
+        }
 
         message = "Hello";
 
         System.out.println("Bob to Alice");
         System.out.println("-------------------------------------------");
 
-        BigInteger encryptedToAlice = alice.getPublicKey().encrypt(message);
-        System.out.printf("Ciphertext of %s: %s%n%n", message, encryptedToAlice);
+        try {
+            BigInteger encryptedToAlice = alice.getPublicKey().encrypt(message);
+            System.out.printf("Ciphertext of %s: %s%n%n", message, encryptedToAlice);
 
-        String messageFromBob = alice.decrypt(encryptedToAlice);
-        System.out.printf("Plaintext of %s: %s%n", message, messageFromBob);
+            String messageFromBob = alice.decrypt(encryptedToAlice);
+            System.out.printf("Plaintext of %s: %s%n", message, messageFromBob);
+        } catch (KeySizeException e) {
+            System.out.println(e.getMessage());
+        }
 
         message = "Hello world";
-
+        */
 
     }
 

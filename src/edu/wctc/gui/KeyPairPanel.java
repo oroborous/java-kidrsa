@@ -52,12 +52,12 @@ public class KeyPairPanel extends JPanel {
         btnLoadFromFile.setText("Load " + keyOwner + "'s Keys from File");
 
         int row = 0;
-        add(new JLabel(keyOwner + "'s private key is:"), new GridBagConstraints(0, row++, 2, 1, 1, 0,
+        add(new JLabel(keyOwner + "'s private key (e, n) is:"), new GridBagConstraints(0, row++, 2, 1, 1, 0,
                 GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(10, 0, 0, 0), 0, 0));
         add(txtPrivateKey, new GridBagConstraints(0, row++, 2, 1, 1, 0,
                 GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, new Insets(5, 0, 0, 0), 0, 0));
 
-        add(new JLabel(keyOwner + "'s public key is:"), new GridBagConstraints(0, row++, 2, 1, 1, 0,
+        add(new JLabel(keyOwner + "'s public key is (d, n) :"), new GridBagConstraints(0, row++, 2, 1, 1, 0,
                 GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(10, 0, 0, 0), 0, 0));
         add(txtPublicKey, new GridBagConstraints(0, row++, 2, 1, 1, 0,
                 GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, new Insets(5, 0, 0, 0), 0, 0));
